@@ -6,8 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item"><a class="nav-link" [ngClass]="(selectedFeatureName === 'recipes' ? 'active' : '')" href="#" (click)="updateUiByName('recipes')">Recipes</a></li>
-        <li class="nav-item"><a class="nav-link" [ngClass]="(selectedFeatureName === 'list' ? 'active' : '')" href="#" (click)="updateUiByName('list')">Shopping List</a></li>
+        <li class="nav-item"><a class="nav-link" [ngClass]="{ active: selectedFeatureName === 'recipes' }" href="#" (click)="updateUiByName('recipes')">Recipes</a></li>
+        <li class="nav-item"><a class="nav-link" [ngClass]="{ active: selectedFeatureName === 'list' }" href="#" (click)="updateUiByName('list')">Shopping List</a></li>
         <li class="nav-item ms-lg-auto">
           <select name="feature" class="form-select" (input)="updateUiBySelect($event)">
             <option value="recipes" [selected]="selectedFeatureName === 'recipes'">Recipes</option>
