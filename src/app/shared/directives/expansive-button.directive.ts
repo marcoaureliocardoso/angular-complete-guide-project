@@ -9,12 +9,12 @@ export class ExpansiveButtonDirective {
 
   constructor() {}
 
-  @HostListener('mouseenter') mouseOver(event: Event) {
+  @HostListener('mouseenter') mouseOver() {
     this.isExpanded = true;
     this.backgroundColor = 'DodgerBlue';
   }
 
-  @HostListener('mouseleave') mouseLeave(event: Event) {
+  @HostListener('mouseleave') mouseLeave() {
     this.isExpanded = false;
     this.backgroundColor = '#0d6efd';
   }
