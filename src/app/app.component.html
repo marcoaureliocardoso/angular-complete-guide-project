@@ -1,12 +1,8 @@
-<app-header (featureSelected)="onFeatureSelected($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      @if (selectedFeature === 'recipes') {
-      <app-recipe-book></app-recipe-book>
-      } @else {
-      <app-shopping-list></app-shopping-list>
-      }
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

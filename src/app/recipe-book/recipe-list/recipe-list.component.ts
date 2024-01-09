@@ -16,9 +16,4 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
     this.recipes = this.recipeBookService.getRecipes();
   }
-
-  createRecipe() {
-    console.log('createRecipe');
-    this.recipeBookService.addRecipe(new Recipe('New Recipe', 'New Recipe Description', 'assets/carrot-cake.jpg', []));
-  }
 }

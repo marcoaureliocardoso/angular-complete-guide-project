@@ -4,18 +4,18 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
   selector: '[appExpansiveButton]',
 })
 export class ExpansiveButtonDirective {
-  @HostBinding('class.btn-lg') isExpanded = false;
-  @HostBinding('style.backgroundColor') backgroundColor = '#0d6efd';
+  @HostBinding('class.btn-warning') isExpanded = false;
+  @HostBinding('style.textTransform') textTransform = 'none';
 
   constructor() {}
 
   @HostListener('mouseenter') mouseOver() {
     this.isExpanded = true;
-    this.backgroundColor = 'DodgerBlue';
+    this.textTransform = 'uppercase';
   }
 
   @HostListener('mouseleave') mouseLeave() {
     this.isExpanded = false;
-    this.backgroundColor = '#0d6efd';
+    this.textTransform = 'none';
   }
 }

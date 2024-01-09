@@ -9,7 +9,7 @@ export class RecipeBookService {
   private recipes: Recipe[] = [
     new Recipe(
       'Carrot Cake',
-      "Moist, spiced cake filled with grated carrots and nuts, raisins, or pineapple. It's topped with a rich cream cheese frosting, offering a perfect balance of sweet and tangy flavors.",
+      "Moist, spiced cake filled with grated carrots and nuts, raisins, or pineapple; topped with a rich cream cheese frosting, offering a perfect balance of sweet and tangy flavors.",
       'assets/carrot-cake.jpg',
       [
         new Ingredient('Vegetable Oil', 1),
@@ -23,7 +23,7 @@ export class RecipeBookService {
     ),
     new Recipe(
       'Lobster Salad with Spring Peas, Radish and Tarragon Vinaigrette',
-      'The Lobster Salad with Spring Peas, Radish, and Tarragon Vinaigrette is a delicate and fresh dish. Succulent lobster is paired with sweet peas and crisp radishes with tarragon vinaigrette.',
+      'Succulent lobster paired with sweet peas and crisp radishes with tarragon vinaigrette; topped with a dollop of labneh, a Middle Eastern yogurt cheese.',
       'assets/Spring-Radish-Pea-Lobster-Salad-Labneh.jpg',
       [
         new Ingredient('Serrano Pepper', 1),
@@ -47,7 +47,7 @@ export class RecipeBookService {
   }
 
   getRecipe(index: number): Recipe {
-    return this.recipes[index];
+    return this.recipes.slice()[index];
   }
 
   updateRecipe(index: number, recipe: Recipe): void {
@@ -56,6 +56,5 @@ export class RecipeBookService {
 
   removeRecipe(index: number): void {
     this.recipes.splice(index, 1);
-    console.log(this.recipes);
   }
 }

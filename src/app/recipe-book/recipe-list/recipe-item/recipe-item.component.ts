@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../recipe';
 import { RecipeBookService } from '../../recipe-book.service';
 
@@ -7,12 +7,14 @@ import { RecipeBookService } from '../../recipe-book.service';
   templateUrl: './recipe-item.component.html',
   styleUrl: './recipe-item.component.css',
 })
-export class RecipeItemComponent {
-  @Input() public recipe: Recipe = null;
+export class RecipeItemComponent implements OnInit {
+  @Input() public recipeId: number = null;
 
-  constructor(private recipeBookService: RecipeBookService) {}
+  public recipe: Recipe = null;
 
-  selectRecipe() {
-    this.recipeBookService.recipeSelected.emit(this.recipe);
+  constructor(private recipeService: RecipeBookService) {}
+
+  ngOnInit() {
+    this.recipe = this.recipeService.getRecipe(this.recipeId);
   }
 }

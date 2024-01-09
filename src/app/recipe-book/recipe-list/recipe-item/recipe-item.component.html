@@ -1,14 +1,14 @@
-<a href="#" class="list-group-item" (click)="selectRecipe()">
+<a class="list-group-item" routerLinkActive="active" [routerLink]="[recipeId]">
   <div class="row">
     <h4 class="mb-0">{{ recipe.name }}</h4>
   </div>
-  <div class="mt-2 d-none d-md-block">
+  <div class="mt-1 d-none d-md-block">
     <div class="d-flex">
-      <div class="p-2">
-        <p>{{ recipe.description }}</p>
+      <div class="p-2 pb-1">
+        <p class="mb-0">{{ recipe.description }}</p>
       </div>
-      <div class="ms-auto p-2">
-        <img [src]="recipe.imagePath" [alt]="recipe.name" class="" style="max-height: 60px" />
+      <div class="ms-auto p-2 pb-1">
+        <img [src]="recipe.imagePath" [alt]="recipe.name" class="rounded" style="max-height: 60px" />
       </div>
     </div>
   </div>

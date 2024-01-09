@@ -1,13 +1,12 @@
-<div class="row mt-3">
+<div class="row mt-3 mb-2">
   <div class="col-xs-12">
-    <button class="btn btn-primary" (click)="createRecipe()">New Recipe</button>
+    <button class="btn btn-success" routerLink="create">New Recipe</button>
   </div>
 </div>
-<hr />
 <div class="row">
   <div class="col-xs-12 list-group">
-    @for (recipesElement of recipes; track $index) {
-    <app-recipe-item [recipe]="recipesElement" class="mb-1"></app-recipe-item>
+    @for (recipesElement of recipes; track recipesElement; let i = $index) {
+    <app-recipe-item [recipeId]="i" class="mb-1"></app-recipe-item>
     }
   </div>
 </div>

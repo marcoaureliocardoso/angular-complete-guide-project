@@ -12,6 +12,10 @@ import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail
 import { RecipeBookComponent } from './recipe-book/recipe-book.component';
 import { FormsModule } from '@angular/forms';
 import { ExpansiveButtonDirective } from './shared/directives/expansive-button.directive';
+import { RouterLink, RouterLinkActive, RouterOutlet, provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { RecipeEditComponent } from './recipe-book/recipe-edit/recipe-edit.component';
+import { NoRecipeComponent } from './recipe-book/no-recipe/no-recipe.component';
 
 @NgModule({
   declarations: [
@@ -23,15 +27,20 @@ import { ExpansiveButtonDirective } from './shared/directives/expansive-button.d
     RecipeItemComponent,
     RecipeDetailComponent,
     RecipeBookComponent,
-    ExpansiveButtonDirective
+    ExpansiveButtonDirective,
+    RecipeEditComponent,
+    NoRecipeComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
 
-    FormsModule
+    FormsModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
   ],
-  providers: [],
+  providers: [provideRouter(routes)],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

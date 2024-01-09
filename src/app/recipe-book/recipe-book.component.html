@@ -2,11 +2,7 @@
   <div class="col-md-5">
     <app-recipe-list></app-recipe-list>
   </div>
-  <div class="col-md-7 p-3" style="border-left: 1px solid lightgray;">
-    @if (selectedRecipe != null) {
-    <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
-    } @else {
-    <p style="text-align: center">Select a Recipe to see it's details</p>
-    }
+  <div class="col-md-7 p-3">
+    <router-outlet></router-outlet>
   </div>
 </div>
