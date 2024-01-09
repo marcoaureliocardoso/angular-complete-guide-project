@@ -1,12 +1,10 @@
 <div class="row">
   <div class="col-xs-10">
-    <app-shopping-list-edit (itemCreated)="onItemCreated($event)"></app-shopping-list-edit>
+    <app-shopping-list-edit></app-shopping-list-edit>
     <hr />
     <ul class="list-group">
       @for (ingredient of ingredients; track $index) {
-      <!-- Ingredient -->
       <a href="#" class="list-group-item"> {{ ingredient.name }} ({{ ingredient.amount }}) </a>
-      <!-- End of Ingredient -->
       }
     </ul>
   </div>
