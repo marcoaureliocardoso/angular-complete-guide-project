@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeBookService } from '../recipe-book.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../recipe';
 
 @Component({
@@ -21,7 +21,7 @@ export class RecipeEditComponent implements OnInit {
     ingredients: [],
   };
 
-  constructor(private recipeBookService: RecipeBookService, private route: ActivatedRoute) {}
+  constructor(private recipeBookService: RecipeBookService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -42,9 +42,9 @@ export class RecipeEditComponent implements OnInit {
   saveRecipe() {
     if (!this.editMode) {
       this.recipeBookService.addRecipe(this.newRecipe);
-      return;
+    } else {
+      this.recipeBookService.updateRecipe(this.recipeId, this.newRecipe);
     }
-
-    this.recipeBookService.updateRecipe(this.recipeId, this.newRecipe);
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }
