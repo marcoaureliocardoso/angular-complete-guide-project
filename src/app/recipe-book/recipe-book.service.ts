@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from './recipe';
 import { Ingredient } from '../shared/ingredient';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,8 @@ export class RecipeBookService {
     ),
   ];
 
+  public bookChanged: Subject<Recipe[]> = new Subject<Recipe[]>();
+
   constructor() {}
 
   getRecipes(): Recipe[] {
@@ -42,6 +45,7 @@ export class RecipeBookService {
 
   addRecipe(recipe: Recipe): void {
     this.recipes.push(recipe);
+    this.bookChanged.next(this.recipes.slice());
   }
 
   getRecipe(index: number): Recipe {
@@ -50,9 +54,11 @@ export class RecipeBookService {
 
   updateRecipe(index: number, recipe: Recipe): void {
     this.recipes[index] = recipe;
+    this.bookChanged.next(this.recipes.slice());
   }
 
   removeRecipe(index: number): void {
     this.recipes.splice(index, 1);
+    this.bookChanged.next(this.recipes.slice());
   }
 }
