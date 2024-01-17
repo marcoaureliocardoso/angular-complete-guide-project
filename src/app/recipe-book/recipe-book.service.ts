@@ -13,13 +13,13 @@ export class RecipeBookService {
       "Moist, spiced cake filled with grated carrots and nuts, raisins, or pineapple; topped with a rich cream cheese frosting, offering a perfect balance of sweet and tangy flavors.",
       'assets/carrot-cake.jpg',
       [
-        new Ingredient('Vegetable Oil', 1),
-        new Ingredient('Natural Yogurt', 1),
-        new Ingredient('Egg', 3),
-        new Ingredient('Flour', 1),
-        new Ingredient('Carrot', 2),
-        new Ingredient('Walnut', 2),
-        new Ingredient('Butter', 1),
+        new Ingredient(null, 'Vegetable Oil', 1),
+        new Ingredient(null, 'Natural Yogurt', 1),
+        new Ingredient(null, 'Egg', 3),
+        new Ingredient(null, 'Flour', 1),
+        new Ingredient(null, 'Carrot', 2),
+        new Ingredient(null, 'Walnut', 2),
+        new Ingredient(null, 'Butter', 1),
       ]
     ),
     new Recipe(
@@ -27,10 +27,10 @@ export class RecipeBookService {
       'Succulent lobster paired with sweet peas and crisp radishes with tarragon vinaigrette; topped with a dollop of labneh, a Middle Eastern yogurt cheese.',
       'assets/Spring-Radish-Pea-Lobster-Salad-Labneh.jpg',
       [
-        new Ingredient('Serrano Pepper', 1),
-        new Ingredient('Fresh Tarragon', 2),
-        new Ingredient('Champagne Vinegar', 2),
-        new Ingredient('Maine Lobster', 1)
+        new Ingredient(null, 'Serrano Pepper', 1),
+        new Ingredient(null, 'Fresh Tarragon', 2),
+        new Ingredient(null, 'Champagne Vinegar', 2),
+        new Ingredient(null, 'Maine Lobster', 1)
       ]
     ),
   ];

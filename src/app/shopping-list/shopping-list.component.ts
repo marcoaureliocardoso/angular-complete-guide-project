@@ -9,7 +9,7 @@ import { ShoppingListService } from './shopping-list.service';
   templateUrl: './shopping-list.component.html',
   styleUrl: './shopping-list.component.css',
 })
-export class ShoppingListComponent implements OnInit, OnDestroy{
+export class ShoppingListComponent implements OnInit, OnDestroy {
   public ingredients: Ingredient[] = [];
   private subjectSubscription: Subscription = null;
 
@@ -24,5 +24,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.subjectSubscription.unsubscribe();
+  }
+
+  ingredientSelect(id: number): void {
+    this.shoppingListService.ingredientSelected.next(id);
   }
 }

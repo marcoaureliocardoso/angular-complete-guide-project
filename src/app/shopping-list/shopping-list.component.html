@@ -3,8 +3,8 @@
     <app-shopping-list-edit></app-shopping-list-edit>
     <hr />
     <ul class="list-group">
-      @for (ingredient of ingredients; track $index) {
-      <a class="list-group-item"> {{ ingredient.name }} ({{ ingredient.amount }}) </a>
+      @for (ingredient of ingredients; track ingredient; let i=$index) {
+      <a class="list-group-item" (click)="ingredientSelect(i)"> {{ ingredient.name }} ({{ ingredient.amount }}) </a>
       }
     </ul>
   </div>
