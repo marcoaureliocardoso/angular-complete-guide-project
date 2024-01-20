@@ -5,8 +5,8 @@
 </div>
 <div class="row">
   <div class="col-xs-12 list-group">
-    @for (recipesElement of recipes; track recipesElement; let i = $index) {
-    <app-recipe-item [recipeId]="i" class="mb-1"></app-recipe-item>
+    @for (recipesElement of recipes; track recipesElement) {
+    <app-recipe-item [recipeId]="recipesElement.id" class="mb-1"></app-recipe-item>
     }
   </div>
 </div>

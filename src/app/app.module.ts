@@ -10,7 +10,7 @@ import { RecipeListComponent } from './recipe-book/recipe-list/recipe-list.compo
 import { RecipeItemComponent } from './recipe-book/recipe-list/recipe-item/recipe-item.component';
 import { RecipeDetailComponent } from './recipe-book/recipe-detail/recipe-detail.component';
 import { RecipeBookComponent } from './recipe-book/recipe-book.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExpansiveButtonDirective } from './shared/directives/expansive-button.directive';
 import { RouterLink, RouterLinkActive, RouterOutlet, provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -36,6 +36,8 @@ import { NoRecipeComponent } from './recipe-book/no-recipe/no-recipe.component';
     NgbModule,
 
     FormsModule,
+    ReactiveFormsModule,
+
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
