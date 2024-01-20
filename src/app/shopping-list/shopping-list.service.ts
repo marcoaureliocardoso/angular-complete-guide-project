@@ -10,6 +10,7 @@ export class ShoppingListService {
   public ingredientSelected: Subject<number> = new Subject<number>();
 
   private ingredients: Ingredient[] = [];
+  private nextId: number = 0;
 
   constructor() {
     this.addIngredient(new Ingredient(null, 'Apples', 5));
@@ -21,32 +22,50 @@ export class ShoppingListService {
   }
 
   addIngredient(ingredient: Ingredient): Ingredient {
-    ingredient.id = this.ingredients.length;
+    ingredient.id = this.nextId;
+    this.nextId++;
+
     this.ingredients.push(ingredient);
 
-    this.listChanged.next(this.ingredients.slice());
+    this.listChanged.next(this.getIngredients());
 
-    return { ...this.ingredients.at(-1) };
+    return this.getIngredient(ingredient.id);
   }
 
   addIngredients(ingredients: Ingredient[]): void {
     ingredients.forEach((ingredient: Ingredient) => {
       this.addIngredient(ingredient);
     });
-    this.listChanged.next(this.ingredients.slice());
+    this.listChanged.next(this.getIngredients());
   }
 
-  getIngredient(id: number): Ingredient {
-    return { ...this.ingredients[id] };
+  getIngredient(id: number): Ingredient | null {
+    const foundIngredient = this.ingredients.find((ingredient) => ingredient.id === id);
+
+    if (!foundIngredient) {
+      return null;
+    }
+
+    return new Ingredient(id, foundIngredient.name, foundIngredient.amount);
   }
 
-  updateIngredient(id: number, ingredient: Ingredient): void {
-    this.ingredients[id] = { ...this.getIngredient(id), ...{ name: ingredient.name, amount: ingredient.amount } };
-    this.listChanged.next(this.ingredients.slice());
+  updateIngredient(id: number, updatedIngredient: Ingredient): Ingredient {
+    const currentIndex = this.ingredients.findIndex((ingredient) => ingredient.id === id);
+
+    updatedIngredient.id = id;
+
+    this.ingredients[currentIndex] = updatedIngredient;
+
+    this.listChanged.next(this.getIngredients());
+
+    return this.getIngredient(id);
   }
 
   removeIngredient(id: number): void {
-    this.ingredients.splice(id, 1);
-    this.listChanged.next(this.ingredients.slice());
+    const currentIndex = this.ingredients.findIndex((ingredient) => ingredient.id === id);
+
+    this.ingredients.splice(currentIndex, 1);
+
+    this.listChanged.next(this.getIngredients());
   }
 }
