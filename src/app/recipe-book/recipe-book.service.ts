@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Recipe } from './recipe';
-import { Ingredient } from '../shared/ingredient';
 import { Subject } from 'rxjs';
+
+// import { Ingredient } from '../shared/ingredient';
+import { Recipe } from './recipe';
 
 @Injectable({
   providedIn: 'root',
@@ -12,34 +13,42 @@ export class RecipeBookService {
   private recipes: Recipe[] = [];
   private nextId: number = 0;
 
-  constructor() {
-    this.addRecipe(
-      new Recipe(
-        null,
-        'Carrot Cake',
-        'Moist, spiced cake filled with grated carrots and nuts, raisins, or pineapple; topped with a rich cream cheese frosting, offering a perfect balance of sweet and tangy flavors.',
-        'assets/carrot-cake.jpg',
-        [
-          new Ingredient(null, 'Vegetable Oil', 1),
-          new Ingredient(null, 'Natural Yogurt', 1),
-          new Ingredient(null, 'Egg', 3),
-          new Ingredient(null, 'Flour', 1),
-          new Ingredient(null, 'Carrot', 2),
-          new Ingredient(null, 'Walnut', 2),
-          new Ingredient(null, 'Butter', 1),
-        ]
-      )
-    );
-    this.addRecipe(
-      new Recipe(
-        null,
-        'Lobster Salad with Spring Peas, Radish and Tarragon Vinaigrette',
-        'Succulent lobster paired with sweet peas and crisp radishes with tarragon vinaigrette; topped with a dollop of labneh, a Middle Eastern yogurt cheese.',
-        'assets/Spring-Radish-Pea-Lobster-Salad-Labneh.jpg',
-        [new Ingredient(null, 'Serrano Pepper', 1), new Ingredient(null, 'Fresh Tarragon', 2), new Ingredient(null, 'Champagne Vinegar', 2), new Ingredient(null, 'Maine Lobster', 1)]
-      )
-    );
+  public get nextRecipeId(): number {
+    return this.nextId;
   }
+
+  public set nextRecipeId(value: number) {
+    this.nextId = value;
+  }
+
+  // constructor() {
+  //   this.addRecipe(
+  //     new Recipe(
+  //       null,
+  //       'Carrot Cake',
+  //       'Moist, spiced cake filled with grated carrots and nuts, raisins, or pineapple; topped with a rich cream cheese frosting, offering a perfect balance of sweet and tangy flavors.',
+  //       'assets/carrot-cake.jpg',
+  //       [
+  //         new Ingredient(null, 'Vegetable Oil', 1),
+  //         new Ingredient(null, 'Natural Yogurt', 1),
+  //         new Ingredient(null, 'Egg', 3),
+  //         new Ingredient(null, 'Flour', 1),
+  //         new Ingredient(null, 'Carrot', 2),
+  //         new Ingredient(null, 'Walnut', 2),
+  //         new Ingredient(null, 'Butter', 1),
+  //       ]
+  //     )
+  //   );
+  //   this.addRecipe(
+  //     new Recipe(
+  //       null,
+  //       'Lobster Salad with Spring Peas, Radish and Tarragon Vinaigrette',
+  //       'Succulent lobster paired with sweet peas and crisp radishes with tarragon vinaigrette; topped with a dollop of labneh, a Middle Eastern yogurt cheese.',
+  //       'assets/Spring-Radish-Pea-Lobster-Salad-Labneh.jpg',
+  //       [new Ingredient(null, 'Serrano Pepper', 1), new Ingredient(null, 'Fresh Tarragon', 2), new Ingredient(null, 'Champagne Vinegar', 2), new Ingredient(null, 'Maine Lobster', 1)]
+  //     )
+  //   );
+  // }
 
   getRecipes(): Recipe[] {
     return this.recipes.slice();
@@ -89,6 +98,11 @@ export class RecipeBookService {
 
     this.recipes.splice(currentIndex, 1);
 
+    this.bookChanged.next(this.getRecipes());
+  }
+
+  setRecipes(recipes: Recipe[]): void {
+    this.recipes = recipes;
     this.bookChanged.next(this.getRecipes());
   }
 }
